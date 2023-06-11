@@ -3,13 +3,18 @@ import SearchItems from './SearchItems';
 import AddItem from './AddItem';
 import Content from './Content.js';
 import Footer from './Footer.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
 
   // useStateHook - items array
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('Shoppinglist')));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('Shoppinglist')) || []);
+
+  // save local storage inside use effect to be pull back every time the items array change
+  useEffect(() => {
+    localStorage.setItem('Shoppinglist', JSON.stringify(items)); //current state
+  }, [items]) // if state of items array change, it will set the item to local storage 
 
   // Add new Item
   const [newItem, setNewItem] = useState('');
@@ -17,28 +22,22 @@ function App() {
   // Search Item from the list 
   const [search, setSearch] = useState('');
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    //store new array into local storage
-    //map checked item and set new item into new array listItems
-    localStorage.setItem('Shoppinglist', JSON.stringify(newItems));
-  }
 
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem]
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleCheck = (id) => {
     const listItems = items.map(item => item.id === id ? { ...item, checked: !item.checked } : item)
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleDelete = (id) => {
     const listItems = items.filter(item => item.id !== id);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleSubmit = (e) => {
