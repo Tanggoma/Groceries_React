@@ -108,7 +108,7 @@ ul li::before {
   min-width: 48px;
   height: 36px;
   font-size: 1rem;
-  color: steelblue;
+  color: rgb(127, 44, 168);
   cursor: pointer;
 }
 
@@ -149,8 +149,8 @@ button {
   border-radius: 0.25rem;
   padding: 0.5rem;
   font-size: 1rem;
-  background-color: aliceblue;
-  color: mediumblue;
+  background-color: rgb(194, 164, 214);
+  color: rgb(205, 0, 103);
   cursor: pointer;
 }
 

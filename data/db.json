@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": 5,
+      "checked": false,
+      "item": "Rice"
+    },
+    {
+      "id": 9,
+      "checked": false,
+      "item": "Papaya"
+    },
+    {
+      "id": 12,
+      "checked": false,
+      "item": "Banana"
+    },
+    {
+      "id": 13,
+      "checked": false,
+      "item": "Burger"
+    },
+    {
+      "id": 14,
+      "checked": false,
+      "item": "Mushroom"
+    }
+  ]
+}
